@@ -1,12 +1,19 @@
 % Derevative Function
 clearvars;
 global I J K T X NB B; 
-I=80; J=25; K=1; R=zeros(J,J); MU=zeros(1,J); D=zeros(1,J); C=19;
+% I is the number of conditions 
+% J number of time points
+% C is the cut point
+I=80; J=25; C=19;
+K=1; 
+%---------------------------------------------------------%
+R=zeros(J,J); MU=zeros(1,J); D=zeros(1,J);
 T=linspace(0,1,J); ro=0.5; alpha=2; ro=ro^(1/J); sigma2=.2;
-t=0:0.04:1; 
+t=0:0.04:1; %t is the time vector is should define based on the value of J
 %f=@(x)sin(pi*x)-x.^2-.5;
 %f=@(x)sin(pi*x)-x.^2+1;
 f=@(x)sin(2*pi*x)-4*(x-3/4).^2+1;
+% f is the mean function which is defied as a handel function
 fun=f(t);
 fun(C+1:end)=0;
 plot(t,fun);
