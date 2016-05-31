@@ -1,7 +1,13 @@
 % Derevative Function
 clearvars;
 global I J K T X; 
-I=15; J=50; K=1; R=zeros(J,J); MU=zeros(1,J); D=zeros(1,J); C=24;
+I=15; J=50; K=1; C=24;
+% I is the number of conditions 
+% J number of time points
+% C is the cut point
+% alpha is the type I error
+%--------------------------------------------------------%
+R=zeros(J,J); MU=zeros(1,J); D=zeros(1,J); 
 T=linspace(0,1,J); ro=0.5; alpha=2; ro=ro^(1/J); sigma2=.2;
 t=linspace(0,1,J); 
 %f=@(x)sin(pi*x)-x.^2-.5;
