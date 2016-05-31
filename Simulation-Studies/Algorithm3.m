@@ -7,6 +7,7 @@ t=linspace(0,1,J);
 %f=@(x)sin(pi*x)-x.^2-.5;
 %f=@(x)sin(pi*x)-x.^2+1;
 f=@(x)4*pi*cos(4*pi*x)-6*(x-3/4).^2-12.1936;
+%f is the mean function which is defied as a handle function
 fun=f(t);
 fun(C+1:end)=0;
 plot(t,fun);
@@ -99,4 +100,4 @@ for rep=1:5000
     CUT(rep)=back-1;
     disp(rep);
 end
-disp([mean(CUT) mean(abs(CUT-26))])
+disp([mean(CUT) mean(abs(CUT-C))])
