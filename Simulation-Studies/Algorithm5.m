@@ -4,12 +4,19 @@ clc;
 disp(['  ' 'condition' '    ' 'alpha' '     ' 'mean' '        ' 'mse']);
 global I J K f fun data; 
 for alpha1=[0.1 0.05 .025];
-I=30; J=50; K=1; R=zeros(J,J); MU=zeros(1,J); D=zeros(1,J); C=25;
+I=30; J=50; C=25;
+% I is the number of conditions 
+% J number of time points
+% C is the cut point
+% alpha is the type I error
+%--------------------------------------------------------%
+K=1; R=zeros(J,J); MU=zeros(1,J); D=zeros(1,J); 
 T=linspace(0,1,J); ro=0.5; alpha=2; ro=ro^(1/J); sigma2=.2;
 t=linspace(0,1,J); 
 %f=@(x)sin(pi*x)-x.^2-.5;
 %f=@(x)sin(pi*x)-x.^2+1;
 f=@(x)4*pi*cos(4*pi*x)-6*(x-3/4).^2-12.1936;
+%f is the mean function which is defied as a handle function
 fun=f(t);
 fun(C+1:end)=0;
 plot(t,fun);
@@ -80,9 +87,9 @@ for rep=1:5000
     end
     RES(rep)=F_T;
 end
-mm=mean(RES(RES<30))+1;
-mse=mean((RES(RES<30)-C));
-RES=RES(RES<30);
+mm=mean(RES)+1;
+mad=mean((RES-C));
+RES=RES;
 disp([I alpha1 mm mse mean(RES==(C))]);
 end
 
