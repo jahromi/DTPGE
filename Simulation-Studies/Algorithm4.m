@@ -86,8 +86,8 @@ for rep=1:5000
 end
 RES=RES+1;
 c=C+1;
-mm=mean(RES(RES<40));
-mad=mean(abs(RES(RES<40)-c));
+mm=mean(RES);
+mad=mean(abs(RES-c));
 disp([I alpha1 mm mad]);
 end
 
